@@ -25,3 +25,10 @@ Feature: Hear shout
       And a person named Larry is located at 150
       When Sean shouts
       Then Larry should not hear a shout
+
+    Scenario: Listener is out of range
+      Given the distance is 100
+      And a person called Sean is located at 0
+      And a person named Larry is positioned at 200
+      When Sean shouts
+      Then Larry should not hear a shout

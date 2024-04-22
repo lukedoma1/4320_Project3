@@ -14,9 +14,6 @@ import java.util.*;
 
 import java.util.HashMap;
 
-//import static org.hamcrest.CoreMatchers.not;
-//import static org.hamcrest.core.IsCollectionContaining.hasItem;
-//import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class StepDefinitions {
@@ -31,7 +28,12 @@ public class StepDefinitions {
         people = new HashMap<String, Person>();
     }
 
-    @Given("the range is {int}")
+//    @Given("the range is {int}")
+//    public void the_range_is(int range) throws Throwable {
+//        network = new Network(range);
+//    }
+
+    @Given("the range/distance is {int}")
     public void the_range_is(int range) throws Throwable {
         network = new Network(range);
     }
@@ -41,7 +43,11 @@ public class StepDefinitions {
         people.put(name, new Person(network, 0));
     }
 
-    @Given("a person named {word} is located at {int}")
+//    @Given("a person named {word} is located at {int}")
+//    public void a_person_named_is_located(String name, int location) throws Throwable {
+//        people.put(name, new Person(network, location));
+//    }
+    @Given("a person named/called {word} is located/positioned at {int}")
     public void a_person_named_is_located(String name, int location) throws Throwable {
         people.put(name, new Person(network, location));
     }
