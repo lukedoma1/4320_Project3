@@ -1,20 +1,12 @@
 package io.cucumber.skeleton;
-
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
 import io.cucumber.java.en.Then;
-
 import io.cucumber.java.Before;
-import io.cucumber.java.en.Given;
-import io.cucumber.java.en.Then;
-import io.cucumber.java.en.When;
-
 import java.util.*;
-
-
 import java.util.HashMap;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
+
 
 public class StepDefinitions {
 
@@ -25,31 +17,13 @@ public class StepDefinitions {
 
     @Before
     public void createNetwork() {
-        people = new HashMap<String, Person>();
+        people = new HashMap<>();
     }
 
-//    @Given("the range is {int}")
-//    public void the_range_is(int range) throws Throwable {
-//        network = new Network(range);
-//    }
-
-    @Given("the range/distance is {int}")
-    public void the_range_is(int range) throws Throwable {
-        network = new Network(range);
-    }
 
     @Given("a person named {word}")
     public void a_person_named(String name) throws Throwable {
         people.put(name, new Person(network, 0));
-    }
-
-//    @Given("a person named {word} is located at {int}")
-//    public void a_person_named_is_located(String name, int location) throws Throwable {
-//        people.put(name, new Person(network, location));
-//    }
-    @Given("a person named/called {word} is located/positioned at {int}")
-    public void a_person_named_is_located(String name, int location) throws Throwable {
-        people.put(name, new Person(network, location));
     }
 
     @When("Sean shouts")
@@ -77,4 +51,36 @@ public class StepDefinitions {
     public void larry_should_not_hear_a_shout() throws Throwable {
         assertEquals(0, people.get("Larry").getMessagesHeard().size());
     }
+
+    @Given("the range is {int}")
+    public void the_range_is(int range) throws Throwable {
+        network = new Network(range);
+    }
+
+//////For the first failed scenario:
+
+        @Given("a person named {word} is located at {int}")
+        public void a_person_named_is_located(String name, int location) throws Throwable {
+            people.put(name, new Person(network, location));
+        }
+
+
+//    @Given("a person named/called {word} is located/positioned at {int}")
+//    public void a_person_named_is_located(String name, int location) throws Throwable {
+//        people.put(name, new Person(network, location));
+//    }
+//
+//////For the second failed scenario:
+//
+//    @When("Sarah shouts")
+//    public void sarah_shouts() throws Throwable {
+//        people.get("Sarah").shout("Hello, world");
+//    }
+//
+//    @Then("Lauren should not hear a shout")
+//    public void lauren_should_not_hear_a_shout() throws Throwable {
+//        assertEquals(0, people.get("Lauren").getMessagesHeard().size());
+//    }
+
+
 }
